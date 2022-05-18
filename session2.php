@@ -1,7 +1,7 @@
 <?php
 
-
-
+include("dp.php");
+//echo $test;
 ?>
 
 
@@ -65,6 +65,38 @@
 
   </form>
 
+<br>
+<h1 class="display-3 mb-5 text-center">All Student</h1>
+<table class="table table-light">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Qari</th>
+      <th>Timings</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    $fetch = $con->query("SELECT * FROM `student`");
+      foreach($fetch as $data){
+    ?>
+    <tr>
+      <td><?php echo $data['Name'] ?></td>
+      <td><?php echo $data['Email'] ?></td>
+      <td><?php echo $data['PhoneNo'] ?></td>
+      <td><?php echo $data['Qari'] ?></td>
+      <td><?php echo $data['Days'] ?></td>
+  
+    </tr>
+<?php } ?>
+  
+  </tbody>
+</table>
+
+
   </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -88,6 +120,15 @@ if(isset($_POST['btn']))
     $days = $_POST['days'];
 
 
+    $insert = $con->query("INSERT INTO `student`(`Name`, `Email`, `PhoneNo`, `Qari`, `Days`) 
+    VALUES ('$name','$email','$phone','$qari','$days')");
+    if($insert){
+     ?>
+
+<script> alert("Sucessf") </script>
+
+<?php
+    }
     // echo $name,$email,$phone,$qari,$days;
 
 
