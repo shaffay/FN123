@@ -119,22 +119,35 @@ if(isset($_POST['btn']))
     $qari = $_POST['qari'];
     $days = $_POST['days'];
 
+if($name != null){
 
-    $insert = $con->query("INSERT INTO `student`(`Name`, `Email`, `PhoneNo`, `Qari`, `Days`) 
-    VALUES ('$name','$email','$phone','$qari','$days')");
-    if($insert){
+  $insert = $con->query("INSERT INTO `student`(`Name`, `Email`, `PhoneNo`, `Qari`, `Days`) 
+  VALUES ('$name','$email','$phone','$qari','$days')");
+
+
+
+
+if($insert){
+  header("location:session2.php");
      ?>
 
-<script> alert("Sucessf") </script>
+<script> alert("Sucess") </script>
 
 <?php
+
+
     }
     // echo $name,$email,$phone,$qari,$days;
 
 
 
 
-
+  }
+  else{
+  ?>
+<script> alert("Enter NaME IN THE FORM") </script>
+  <?php
+}
 
 
 }
