@@ -21,51 +21,10 @@ include("dp.php");
   
   <div class="container">
   
-  <div class="text-center">
-      <h2>Student Registration</h2>
 
-  </div>
-  
-  <form action="session2.php" method="post">
-
-  <div class="form-group">
-    <label for="">Enter Your Name:</label>
-    <input type="text" class="form-control" name="name" >
-  </div>
-  <div class="form-group">
-    <label for="">Enter Your Email:</label>
-    <input type="email" class="form-control" name="email" >
-  </div>
-  <div class="form-group">
-    <label for="">Enter Your Phone No:</label>
-    <input type="text" class="form-control" name="phone" >
-  </div>
-  <div class="form-group">
-    <label for="">Select Your Qari:</label>
-    <select name="qari" class="form-control">
-        <option></option>
-        <option >Qari Ammir liaquat</option>
-        <option >Qari Gaza Hassan</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="">Select Your Days:</label>
-    <select name="days" class="form-control">
-        <option></option>
-        <option value="MWF">MWF</option>
-        <option value="TTS">TTS</option>
-    </select>
-  </div>
-
-
-  <div class="text-center mt-5">
-      <input type="submit" name="btn" class="btn btn-primary" value="Register">
-  </div>
-
-
-  </form>
 
 <br>
+<a href="addstudent.php" class="btn btn-info float-right">Add Student</a>
 <h1 class="display-3 mb-5 text-center">All Student</h1>
 <table class="table table-light">
   <thead>
@@ -75,6 +34,7 @@ include("dp.php");
       <th>Phone</th>
       <th>Qari</th>
       <th>Timings</th>
+      <th>Options</th>
       
     </tr>
   </thead>
@@ -89,6 +49,10 @@ include("dp.php");
       <td><?php echo $data['PhoneNo'] ?></td>
       <td><?php echo $data['Qari'] ?></td>
       <td><?php echo $data['Days'] ?></td>
+      <td>
+        <a href="" class="btn btn-primary">Edit</a>
+        <a href="delete.php?id=<?php echo $data['id'] ?>" class="btn btn-danger">Delete</a>
+      </td>
   
     </tr>
 <?php } ?>
@@ -105,53 +69,4 @@ include("dp.php");
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
-
-
-<?php
-
-if(isset($_POST['btn']))
-{
-
-
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $qari = $_POST['qari'];
-    $days = $_POST['days'];
-
-if($name != null){
-
-  $insert = $con->query("INSERT INTO `student`(`Name`, `Email`, `PhoneNo`, `Qari`, `Days`) 
-  VALUES ('$name','$email','$phone','$qari','$days')");
-
-
-
-
-if($insert){
-  header("location:session2.php");
-     ?>
-
-<script> alert("Sucess") </script>
-
-<?php
-
-
-    }
-    // echo $name,$email,$phone,$qari,$days;
-
-
-
-
-  }
-  else{
-  ?>
-<script> alert("Enter NaME IN THE FORM") </script>
-  <?php
-}
-
-
-}
-
-?>
-
 
