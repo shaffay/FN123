@@ -50,7 +50,7 @@ include("dp.php");
       <td><?php echo $data['Qari'] ?></td>
       <td><?php echo $data['Days'] ?></td>
       <td>
-        <a href="" class="btn btn-primary">Edit</a>
+        <a href="edit.php?id=<?php echo $data['id'] ?>" class="btn btn-primary">Edit</a>
         <a href="delete.php?id=<?php echo $data['id'] ?>" class="btn btn-danger">Delete</a>
       </td>
   
